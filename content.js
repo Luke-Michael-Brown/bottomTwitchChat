@@ -1,47 +1,39 @@
-// content.js
-var CHAT_HEIGHT = 267;
-var height = window.innerHeight;
+// Constants
+var WIDTH_THRESHOLD = 750;
+var CHAT_HEIGHT_MULTIPLIER = 300;
+var INTERVAL_TIME = 100;
 
-var newStyle = "@media screen and (max-width:750px) {";
+// Vars
+var right_col;
+var main_col;
+var interval;
 
-newStyle += "#main_col {";
-newStyle += "height: " + (height - CHAT_HEIGHT) + "px !important;";
-newStyle += "}";
+// Main
+var main = function() {
+	if (!right_col || !main_col) {
+		right_col = document.getElementById("right_col");
+		main_col = document.getElementById("main_col");
+	}
 
-newStyle += "#right_col {";
-newStyle += "display: block !important;";
-newStyle += "top: initial !important;";
-newStyle += "left: 50px !important;";
-newStyle += "right: 50px !important;";
-newStyle += "width: 92% !important;";
-newStyle += "height: " + CHAT_HEIGHT + "px !important;";
-newStyle += "}"
+	if (right_col && main_col) {
+		var width = window.innerWidth;
+		var height = window.innerHeight;
+		var chat_height = Math.floor(CHAT_HEIGHT_MULTIPLIER * height / width);
 
-newStyle += ".chat-header {";
-newStyle += "height: 32px !important;";
-newStyle += "padding: 1px 0 !important;";
-newStyle += "}";
+		if (width <= WIDTH_THRESHOLD) {
+			right_col.style.height = chat_height + "px";
+			main_col.style.height = (height - chat_height) + "px";
+		} else {
+			right_col.style.height = "initial";
+			main_col.style.height = "100%";
+		}
 
-newStyle += ".chat-header__button {";
-newStyle += "top: 0 !important;";
-newStyle += "}";
+		clearInterval(interval);
+	}
+}
 
-newStyle += ".chat-room {";
-newStyle += "top: 32px !important;";
-newStyle += "}";
+// Call main often until it finshed once
+interval = setInterval(main, INTERVAL_TIME);
 
-newStyle += ".chat-messages {";
-newStyle += "bottom: 95px !important;";
-newStyle += "}";
-
-newStyle += ".chat-interface {";
-newStyle += "height: 95px !important;";
-newStyle += "}";
-
-newStyle += ".chat-line {";
-newStyle += "font-size: 11px !important;"
-newStyle += "line-height: 11px !important;"
-newStyle += "}";
- 
-newStyle += "}";
-document.querySelector('style').textContent += newStyle;
+// Recall main every time there is a window resize
+window.onresize = main;

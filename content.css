@@ -1,0 +1,40 @@
+@media screen and (max-width:750px) {
+	.app-main.theatre #right_col {
+		width: 100% !important;
+		left: 0px !important;
+		right: 0px !important;
+	}
+
+	#right_col {
+		display: block !important;
+		top: initial !important;
+		left: 50px !important;
+		right: 50px !important;
+		width: 92% !important;
+	}
+
+	.chat-header {
+		height: 32px !important;
+		padding: 1px 0 !important;
+	}
+
+	.chat-header__button {
+		top: 0 !important;
+	}
+
+	.chat-room {
+		top: 32px !important;
+	}
+
+	.chat-messages {
+		bottom: 95px !important;
+	}
+
+	.chat-interface {
+		height: 95px !important;
+	}
+
+	.chat-line {;
+		font-size: 11px !important;
+	}
+}
