@@ -1,5 +1,6 @@
 // Constants
 var WIDTH_THRESHOLD = 750;
+var HEIGHT_MAX_RATIO = 0.75;
 var CHAT_HEIGHT_MULTIPLIER = 300;
 var INTERVAL_TIME = 100;
 
@@ -18,7 +19,7 @@ var main = function() {
 	if (right_col && main_col) {
 		var width = window.innerWidth;
 		var height = window.innerHeight;
-		var chat_height = Math.floor(CHAT_HEIGHT_MULTIPLIER * height / width);
+		var chat_height = Math.min(Math.floor(CHAT_HEIGHT_MULTIPLIER * height / width), height * HEIGHT_MAX_RATIO);
 
 		if (width <= WIDTH_THRESHOLD) {
 			right_col.style.height = chat_height + "px";

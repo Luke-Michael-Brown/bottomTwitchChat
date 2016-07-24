@@ -34,7 +34,11 @@
 		height: 95px !important;
 	}
 
-	.chat-line {;
+	.chat-line {
 		font-size: 11px !important;
+	}
+
+	.ember-view {
+		overflow-x: hidden;
 	}
 }
