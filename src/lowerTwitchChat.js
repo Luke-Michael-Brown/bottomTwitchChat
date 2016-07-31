@@ -1,5 +1,7 @@
 // Constants
 var WIDTH_THRESHOLD = 750;
+var HEIGHT_THRESHOLD = 400;
+
 var HEIGHT_MAX_RATIO = 0.75;
 var CHAT_HEIGHT_MULTIPLIER = 300;
 var INTERVAL_TIME = 100;
@@ -25,8 +27,13 @@ var main = function() {
 			right_col.style.height = chat_height + "px";
 			main_col.style.height = (height - chat_height) + "px";
 		} else {
-			right_col.style.height = "initial";
-			main_col.style.height = "100%";
+			if (height <= HEIGHT_THRESHOLD) {
+				right_col.style.height = "initial";
+				main_col.style.height = "100%";
+			} else {
+				right_col.style.height = "0px";
+				main_col.style.height = "100%";
+			}
 		}
 
 		clearInterval(interval);

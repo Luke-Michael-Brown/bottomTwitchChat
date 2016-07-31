@@ -1,12 +1,23 @@
 {
  	"manifest_version": 2,
-	"name": "Half screen twitch chat",
+	"name": "Lower Twitch Chat",
 	"version": "0.1",
   	"content_scripts": [{
     	"matches": [
       		"https://www.twitch.tv/*"
     	],
-    	"js": ["content.js"],
-    	"css": [ "content.css" ]
-  	}]
+    	"js": ["src/lowerTwitchChat.js"],
+    	"css": [ "src/lowerTwitchChat.css" ]
+  	}],
+  	"browser_action": {
+        "default_icon": {
+	      "19": "res/lowerTwitchChat19.png",
+	      "38": "res/lowerTwitchChat38.png"
+	    }
+    },
+    "icons": {
+        "16": "res/lowerTwitchChat16.png",
+        "48": "res/lowerTwitchChat48.png",
+        "128": "res/lowerTwitchChat128.png"
+    }
 }
