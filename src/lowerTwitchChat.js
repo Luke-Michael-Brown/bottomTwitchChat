@@ -28,10 +28,10 @@ var main = function() {
 			main_col.style.height = (height - chat_height) + "px";
 		} else {
 			if (height <= HEIGHT_THRESHOLD) {
-				right_col.style.height = "initial";
+				right_col.style.height = "0px";
 				main_col.style.height = "100%";
 			} else {
-				right_col.style.height = "0px";
+				right_col.style.height = "initial";
 				main_col.style.height = "100%";
 			}
 		}
