@@ -41,4 +41,8 @@
 	.ember-view {
 		overflow-x: hidden;
 	}
+
+	.ember-view {
+		overflow-y: hidden;
+	}
 }
