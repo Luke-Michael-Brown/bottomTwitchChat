@@ -6,15 +6,21 @@ var INTERVAL_TIME = 100;
 var interval;
 var right_col;
 var main_col;
+var player;
 
 // Main
 var main = function() {
-	if (!right_col || !main_col) {
+	if (!right_col || !main_col || !player) {
 		right_col = document.getElementById("right_col");
 		main_col = document.getElementById("main_col");
+
+		var players = document.getElementsByClassName("player");
+		if (players.length > 0) {
+			player = players[0];
+		}
 	}
 
-	if (right_col && main_col) {
+	if (right_col && main_col && player) {
 		var width = window.innerWidth;
 		var height = window.innerHeight;
 
