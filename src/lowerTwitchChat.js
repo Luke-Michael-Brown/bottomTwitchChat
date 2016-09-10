@@ -1,15 +1,11 @@
 // Constants
-var WIDTH_THRESHOLD = 750;
-var HEIGHT_THRESHOLD = 400;
-
-var HEIGHT_MAX_RATIO = 0.75;
-var CHAT_HEIGHT_MULTIPLIER = 300;
+var WIDTH_THRESHOLD = 767;
 var INTERVAL_TIME = 100;
 
 // Vars
+var interval;
 var right_col;
 var main_col;
-var interval;
 
 // Main
 var main = function() {
@@ -21,19 +17,16 @@ var main = function() {
 	if (right_col && main_col) {
 		var width = window.innerWidth;
 		var height = window.innerHeight;
-		var chat_height = Math.min(Math.floor(CHAT_HEIGHT_MULTIPLIER * height / width), height * HEIGHT_MAX_RATIO);
+
+		var player_height = Math.floor(width * 9 / 16);
+		var chat_height = height - player_height;
 
 		if (width <= WIDTH_THRESHOLD) {
 			right_col.style.height = chat_height + "px";
 			main_col.style.height = (height - chat_height) + "px";
 		} else {
-			if (height <= HEIGHT_THRESHOLD) {
-				right_col.style.height = "0px";
-				main_col.style.height = "100%";
-			} else {
-				right_col.style.height = "initial";
-				main_col.style.height = "100%";
-			}
+			right_col.style.height = "initial";
+			main_col.style.height = "100%";
 		}
 
 		clearInterval(interval);
